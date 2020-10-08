@@ -6,7 +6,7 @@ import com.rjdeleon.core.repository.NoteDataSource
 import com.rjdeleon.memorynotes.framework.db.DatabaseService
 import com.rjdeleon.memorynotes.framework.db.NoteEntity
 
-class RoomDataSource(context: Context): NoteDataSource {
+class RoomNoteDataSource(context: Context): NoteDataSource {
 
     val noteDao = DatabaseService.getInstance(context).noteDao()
 
