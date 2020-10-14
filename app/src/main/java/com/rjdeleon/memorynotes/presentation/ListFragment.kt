@@ -13,10 +13,10 @@ import com.rjdeleon.memorynotes.R
 import com.rjdeleon.memorynotes.framework.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_list.*
 
-class ListFragment : Fragment() {
+class ListFragment : Fragment(), ListAction {
 
     private lateinit var viewModel: ListViewModel
-    private val notesListAdapter = NotesListAdapter(arrayListOf())
+    private val notesListAdapter = NotesListAdapter(arrayListOf(), this)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,5 +58,9 @@ class ListFragment : Fragment() {
     private fun goToNoteDetails(id: Long = 0L) {
         val action = ListFragmentDirections.actionGoToNote(id)
         Navigation.findNavController(notesListView).navigate(action)
+    }
+
+    override fun onClick(id: Long) {
+        goToNoteDetails(id)
     }
 }
